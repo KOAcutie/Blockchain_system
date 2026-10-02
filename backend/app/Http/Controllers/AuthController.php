@@ -38,6 +38,18 @@ class AuthController extends Controller
             ->where('email', $request->input('email'))
             ->first();
 
+        // If fresh deployment has not yet run seeder, auto-seed official institutional accounts
+        if (! $user && User::count() === 0) {
+            try {
+                \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+                $user = User::with('role')
+                    ->where('email', $request->input('email'))
+                    ->first();
+            } catch (\Throwable) {
+                // Continue with standard auth check
+            }
+        }
+
         if (! $user || ! Hash::check((string) $request->input('password'), $user->password)) {
             RateLimiter::hit($throttleKey, 60);
             return $this->errorResponse(

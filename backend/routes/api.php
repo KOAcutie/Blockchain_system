@@ -40,6 +40,42 @@ Route::get('/health', function () {
     ]);
 });
 
+Route::get('/system/setup', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        $migrateOutput = \Illuminate\Support\Facades\Artisan::output();
+
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+        $seedOutput = \Illuminate\Support\Facades\Artisan::output();
+
+        $users = \App\Models\User::with('role')->get()->map(function ($u) {
+            return [
+                'id' => $u->id,
+                'name' => $u->name,
+                'email' => $u->email,
+                'student_id' => $u->student_id,
+                'role' => $u->role?->name,
+                'status' => $u->status,
+            ];
+        });
+
+        return response()->json([
+            'success' => true,
+            'message' => 'System migration and database seeding completed successfully!',
+            'users_count' => $users->count(),
+            'users' => $users,
+            'migrate_output' => trim($migrateOutput),
+            'seed_output' => trim($seedOutput),
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Endpoints (/api/auth/*)

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Menu,
@@ -122,8 +123,15 @@ export function Navbar({ role, onOpenMobileMenu }: NavbarProps) {
           }
           className="flex items-center gap-2 lg:hidden"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-xs">
-            <Landmark className="h-4 w-4" />
+          <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white p-0.5 shadow-xs border border-primary/20">
+            <Image
+              src="/ssc-logo.png"
+              alt="Supreme Student Council Seal"
+              width={32}
+              height={32}
+              className="h-full w-full object-contain"
+              priority
+            />
           </div>
           <span className="text-sm font-bold tracking-tight text-foreground">
             SSC Portal

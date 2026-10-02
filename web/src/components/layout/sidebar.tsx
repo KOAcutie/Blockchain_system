@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import {
   ShieldCheck,
@@ -60,8 +61,15 @@ export function Sidebar({
             className="flex items-center gap-3 group"
             onClick={onMobileClose}
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-[0_4px_12px_-2px_hsl(var(--primary)/0.45)] transition-transform group-hover:scale-105">
-              <Landmark className="h-5 w-5" />
+            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white p-0.5 shadow-[0_4px_12px_-2px_hsl(var(--primary)/0.35)] transition-transform group-hover:scale-105 border border-primary/20">
+              <Image
+                src="/ssc-logo.png"
+                alt="Supreme Student Council Seal"
+                width={40}
+                height={40}
+                className="h-full w-full object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-extrabold tracking-tight text-foreground">

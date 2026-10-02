@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Landmark,
   ShieldCheck,
@@ -452,8 +453,15 @@ export function PublicTransparencyPortal() {
       <header className="sticky top-0 z-30 border-b border-border/70 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3 group min-w-0">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-[0_4px_12px_-2px_hsl(var(--primary)/0.45)] transition-transform group-hover:scale-105">
-              <Landmark className="h-5 w-5" />
+            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white p-0.5 shadow-[0_4px_12px_-2px_hsl(var(--primary)/0.35)] transition-transform group-hover:scale-105 border border-primary/20">
+              <Image
+                src="/ssc-logo.png"
+                alt="Supreme Student Council Seal"
+                width={40}
+                height={40}
+                className="h-full w-full object-contain"
+                priority
+              />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
@@ -522,35 +530,47 @@ export function PublicTransparencyPortal() {
         <section className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/95 p-5 sm:p-8 lg:p-10 shadow-[0_8px_30px_-8px_rgba(128,0,32,0.08)]">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-primary/70 to-verified" />
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-3xl space-y-3.5">
-              <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="secondary" className="rounded-full px-3 py-0.5">
-                  <Globe className="mr-1 h-3 w-3 text-primary" />
-                  Open Public Access • No Login Required
-                </Badge>
-                <VerificationBadge
-                  status="Verified"
-                  referenceNo="COA-SSC-2026"
-                  contractAddress={contractAddress}
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 max-w-3xl">
+              <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-2xl bg-white p-1.5 shadow-[0_8px_24px_-4px_hsl(var(--primary)/0.25)] border border-primary/20">
+                <Image
+                  src="/ssc-logo.png"
+                  alt="Supreme Student Council Official Seal"
+                  width={96}
+                  height={96}
+                  className="h-full w-full object-contain"
+                  priority
                 />
-                {backendConnected && (
-                  <Badge variant="verified" className="gap-1 rounded-full">
-                    <Database className="h-3 w-3" />
-                    Live PostgreSQL &amp; Blockchain Synced
-                  </Badge>
-                )}
               </div>
-              <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl lg:text-4xl leading-tight">
-                Supreme Student Council Public Financial Transparency Portal
-              </h1>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Welcome to the official open-data financial registry of the
-                Supreme Student Council ({semesterLabel}). Every student,
-                parent, faculty adviser, and auditor can inspect all council fee
-                collections, Student Assembly appropriations, COA liquidation
-                vouchers, and blockchain-attested receipts below without
-                signing in.
-              </p>
+              <div className="space-y-3.5 flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge variant="secondary" className="rounded-full px-3 py-0.5">
+                    <Globe className="mr-1 h-3 w-3 text-primary" />
+                    Open Public Access • No Login Required
+                  </Badge>
+                  <VerificationBadge
+                    status="Verified"
+                    referenceNo="COA-SSC-2026"
+                    contractAddress={contractAddress}
+                  />
+                  {backendConnected && (
+                    <Badge variant="verified" className="gap-1 rounded-full">
+                      <Database className="h-3 w-3" />
+                      Live PostgreSQL &amp; Blockchain Synced
+                    </Badge>
+                  )}
+                </div>
+                <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl lg:text-4xl leading-tight">
+                  Supreme Student Council Public Financial Transparency Portal
+                </h1>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Welcome to the official open-data financial registry of the
+                  Supreme Student Council ({semesterLabel}). Every student,
+                  parent, faculty adviser, and auditor can inspect all council fee
+                  collections, Student Assembly appropriations, COA liquidation
+                  vouchers, and blockchain-attested receipts below without
+                  signing in.
+                </p>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">

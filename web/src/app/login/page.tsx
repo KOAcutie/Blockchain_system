@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Landmark,
@@ -104,8 +105,15 @@ export default function LoginPage() {
       <div className="hidden lg:flex lg:col-span-5 flex-col justify-between bg-primary p-10 text-primary-foreground">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-foreground/15 text-primary-foreground border border-primary-foreground/20">
-              <Landmark className="h-5 w-5" />
+            <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1 shadow-md border border-white/20">
+              <Image
+                src="/ssc-logo.png"
+                alt="Supreme Student Council Seal"
+                width={48}
+                height={48}
+                className="h-full w-full object-contain"
+                priority
+              />
             </div>
             <div>
               <p className="text-base font-bold tracking-tight">
@@ -168,8 +176,15 @@ export default function LoginPage() {
         <div className="w-full max-w-md space-y-6">
           <div className="flex items-center justify-between pb-1">
             <Link href="/" className="flex items-center gap-2.5 lg:hidden">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <Landmark className="h-5 w-5" />
+              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-0.5 shadow-xs border border-primary/20">
+                <Image
+                  src="/ssc-logo.png"
+                  alt="Supreme Student Council Seal"
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-contain"
+                  priority
+                />
               </div>
               <div>
                 <p className="text-sm font-bold">SSC Transparency</p>

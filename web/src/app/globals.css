@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Institutional #800020 Magenta-Burgundy & White Modern Theme */
+    --background: 345 30% 98.8%;
+    --foreground: 345 45% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 345 45% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 345 45% 10%;
+
+    /* Primary: Exact #800020 (HSL 345 100% 25.1%) */
+    --primary: 345 100% 25.1%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Crisp #800020-Tinted White */
+    --secondary: 345 45% 95.5%;
+    --secondary-foreground: 345 100% 20%;
+
+    /* Muted: Soft Alabaster & Warm Burgundy-Slate */
+    --muted: 345 28% 95.5%;
+    --muted-foreground: 345 18% 38%;
+
+    /* Accent: Soft #800020 Tint Highlight */
+    --accent: 345 52% 93%;
+    --accent-foreground: 345 100% 25.1%;
+
+    /* Destructive: Accessible Crimson */
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Verification / Audit Trust Token (Institutional Emerald Jade) */
+    --verified: 156 58% 30%;
+    --verified-foreground: 0 0% 100%;
+    --verified-muted: 152 46% 93%;
+
+    /* Warning / Pending Status Token (Warm Amber Gold) */
+    --warning: 34 88% 42%;
+    --warning-foreground: 0 0% 100%;
+    --warning-muted: 38 86% 94%;
+
+    /* SSC Brand Identity Tokens (#800020 Edition) */
+    --ssc-navy: 345 100% 25.1%;
+    --ssc-gold: 38 82% 46%;
+    --ssc-slate: 345 28% 24%;
+
+    /* Borders & Focus Rings */
+    --border: 345 22% 89%;
+    --input: 345 22% 86%;
+    --ring: 345 100% 25.1%;
+
+    --radius: 0.875rem;
+  }
+
+  .dark {
+    /* Adaptive #800020 Dark Mode — Deep Burgundy-Obsidian Surfaces with Crisp White */
+    --background: 345 38% 6.5%;
+    --foreground: 0 0% 98%;
+
+    --card: 345 34% 9.8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 345 34% 10.2%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 345 85% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 345 32% 15.5%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 345 28% 13.5%;
+    --muted-foreground: 345 16% 70%;
+
+    --accent: 345 45% 19%;
+    --accent-foreground: 345 90% 92%;
+
+    --destructive: 0 64% 52%;
+    --destructive-foreground: 0 0% 98%;
+
+    --verified: 152 54% 46%;
+    --verified-foreground: 345 38% 7%;
+    --verified-muted: 152 36% 15%;
+
+    --warning: 38 90% 54%;
+    --warning-foreground: 345 38% 7%;
+    --warning-muted: 38 46% 15%;
+
+    --ssc-navy: 345 85% 48%;
+    --ssc-gold: 40 86% 56%;
+    --ssc-slate: 345 20% 78%;
+
+    --border: 345 28% 19%;
+    --input: 345 28% 19%;
+    --ring: 345 85% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/15 selection:text-primary;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-image:
+      radial-gradient(at 0% 0%, hsl(var(--primary) / 0.045) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsl(var(--primary) / 0.03) 0px, transparent 45%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

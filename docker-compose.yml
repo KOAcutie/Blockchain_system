@@ -1,0 +1,87 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ssc_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ssc_transparency
+      POSTGRES_USER: ssc_user
+      POSTGRES_PASSWORD: ssc_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ssc_user -d ssc_transparency"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  hardhat:
+    image: node:20-alpine
+    container_name: ssc_hardhat
+    working_dir: /app
+    volumes:
+      - ./contracts:/app
+    command: sh -c "npm install && npx hardhat node --hostname 0.0.0.0"
+    ports:
+      - "8545:8545"
+
+  blockchain-api:
+    image: python:3.12-slim
+    container_name: ssc_blockchain_api
+    working_dir: /app
+    volumes:
+      - ./blockchain-api:/app
+      - ./contracts/deployments:/contracts/deployments:ro
+    environment:
+      APP_ENV: local
+      PORT: 8001
+      BLOCKCHAIN_RPC_URL: http://hardhat:8545
+      BLOCKCHAIN_CHAIN_ID: 31337
+      BLOCKCHAIN_PRIVATE_KEY: ${BLOCKCHAIN_PRIVATE_KEY:-0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80}
+      BLOCKCHAIN_CONTRACT_ADDRESS: ${BLOCKCHAIN_CONTRACT_ADDRESS:-0x5FbDB2315678afecb367f032d93F642f64180aa3}
+      LARAVEL_SERVICE_KEY: ${LARAVEL_SERVICE_KEY:-ssc-internal-service-secret-2026}
+    command: sh -c "pip install --no-cache-dir -r requirements.txt && uvicorn app.main:app --host 0.0.0.0 --port 8001"
+    ports:
+      - "8001:8001"
+    depends_on:
+      - hardhat
+
+  backend:
+    image: php:8.3-cli
+    container_name: ssc_laravel_backend
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      FRONTEND_URL: http://localhost:3000
+      BLOCKCHAIN_SERVICE_URL: http://blockchain-api:8001
+      BLOCKCHAIN_SERVICE_KEY: ${LARAVEL_SERVICE_KEY:-ssc-internal-service-secret-2026}
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - blockchain-api
+
+  web:
+    image: node:20-alpine
+    container_name: ssc_nextjs_web
+    working_dir: /app
+    volumes:
+      - ./web:/app
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    command: sh -c "npm install && npm run dev -- -H 0.0.0.0 -p 3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

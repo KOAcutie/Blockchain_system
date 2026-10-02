@@ -1,0 +1,10 @@
+{
+  "name": "SSC Transparency | Supreme Student Council Financial & Fee Portal",
+  "short_name": "SSC Portal",
+  "description": "Official Supreme Student Council organization fee collection, digital receipt issuance, and blockchain-verified financial transparency portal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#800020",
+  "orientation": "portrait-primary"
+}

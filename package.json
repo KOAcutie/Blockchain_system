@@ -1,0 +1,12 @@
+{
+  "name": "blockchain-system-root",
+  "private": true,
+  "description": "Root workspace runner for SSC Transparency (web)",
+  "scripts": {
+    "postinstall": "npm --prefix web install",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
+    "lint": "npm --prefix web run lint"
+  }
+}

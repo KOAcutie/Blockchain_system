@@ -1,0 +1,9 @@
+{
+  "contractName": "SSCTransparency",
+  "contractAddress": "0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856",
+  "network": "sepolia",
+  "chainId": 11155111,
+  "deploymentTransaction": "0xa767f2cc04c4b9ae965992263169df07d78518506cbe352463faad2698803aff",
+  "deployerAddress": "0x4c9bb4a812025A6ea054F8BC89E6A97B65c1a7fC",
+  "deployedAt": "2026-10-02T07:11:02.696Z"
+}

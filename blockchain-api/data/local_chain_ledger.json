@@ -1,0 +1,33 @@
+{
+  "block_counter": 102,
+  "transactions": {
+    "0x545fe64f72494ed31fbec2f21ebacc59edb390c08289ae8d14087b94fe3992e6": {
+      "record_hash": "0xd4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4",
+      "amount": 25000,
+      "timestamp": 1790769600,
+      "transaction_hash": "0x6fc199b5bd7e4c28bda9a4719d8666156145ff203fd9acc245b01084db76d149",
+      "block_number": 101
+    },
+    "0x49e96a711e6c11242c30433a78f82a201f9f8a1de7110ae8ef87f18a155ecfd5": {
+      "record_hash": "0x9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+      "amount": 15000,
+      "timestamp": 1790762400,
+      "transaction_hash": "0xad779cf9d249c86f5ffc8a36abdbc9884935e079cf69b2a1087bac2bee9146f0",
+      "block_number": 102
+    }
+  },
+  "receipts": {
+    "0x6fc199b5bd7e4c28bda9a4719d8666156145ff203fd9acc245b01084db76d149": {
+      "transaction_hash": "0x6fc199b5bd7e4c28bda9a4719d8666156145ff203fd9acc245b01084db76d149",
+      "block_number": 101,
+      "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "status": "confirmed"
+    },
+    "0xad779cf9d249c86f5ffc8a36abdbc9884935e079cf69b2a1087bac2bee9146f0": {
+      "transaction_hash": "0xad779cf9d249c86f5ffc8a36abdbc9884935e079cf69b2a1087bac2bee9146f0",
+      "block_number": 102,
+      "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "status": "confirmed"
+    }
+  }
+}

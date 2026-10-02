@@ -1,9 +1,7 @@
 <?php
 
-$allowedOrigins = array_values(array_filter(array_map(
-    'trim',
-    explode(',', (string) env('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000'))
-)));
+$rawOrigins = env('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000');
+$allowedOrigins = array_values(array_filter(array_map('trim', explode(',', (string) $rawOrigins))));
 
 return [
 
@@ -13,7 +11,7 @@ return [
 
     'allowed_origins' => $allowedOrigins,
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['#^https?://.*#'],
 
     'allowed_headers' => ['*'],
 

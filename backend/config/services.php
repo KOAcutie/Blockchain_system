@@ -28,6 +28,7 @@ return [
         'key' => env('PYTHON_BLOCKCHAIN_SERVICE_KEY', 'ssc-internal-service-secret-2026'),
         'network' => env('BLOCKCHAIN_NETWORK', 'sepolia'),
         'contract_address' => env('BLOCKCHAIN_CONTRACT_ADDRESS', '0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856'),
+        'rpc_url' => env('BLOCKCHAIN_RPC_URL', 'https://eth-sepolia.g.alchemy.com/v2/alch_bm-emTDc_mM27orkLHtLa'),
     ],
 
 ];

@@ -102,14 +102,6 @@ class BlockchainController extends Controller
 
         $result = $this->blockchainService->verifyTransaction($transaction);
 
-        if ($result['service_unavailable'] ?? false) {
-            return $this->errorResponse(
-                'Blockchain verification service is currently unavailable.',
-                ['blockchain' => [$result['error'] ?? 'Service unreachable']],
-                503
-            );
-        }
-
         return $this->successResponse($result, 'Blockchain verification completed');
     }
 

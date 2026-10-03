@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'student@example.test'],
             [
                 'name' => 'Maria Clara Santos',
-                'student_id' => 'STU-2026-001',
+                'student_id' => '21-29199',
                 'password' => Hash::make('password'),
                 'role_id' => $studentRole->id,
                 'status' => 'active',
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'student2@example.test'],
             [
                 'name' => 'Jose Protacio Rizal',
-                'student_id' => 'STU-2026-002',
+                'student_id' => '22-30142',
                 'password' => Hash::make('password'),
                 'role_id' => $studentRole->id,
                 'status' => 'active',

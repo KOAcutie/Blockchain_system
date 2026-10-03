@@ -91,7 +91,7 @@ export function mapBackendTransactionToUi(
     receiptId: tx.receipt?.receipt_number || `SSC-RCP-${tx.payment_id}`,
     referenceNo: tx.reference_number || tx.transaction_id,
     studentName: tx.student?.name || "Demo Student",
-    studentId: tx.student?.student_id || "STU-2026-001",
+    studentId: tx.student?.student_id || "21-29199",
     college: tx.student?.college || "CCIS",
     feeId: String(tx.fee?.id || "1"),
     feeTitle: tx.fee?.name || "SSC Semester Fee",

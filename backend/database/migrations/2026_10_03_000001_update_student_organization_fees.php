@@ -180,6 +180,12 @@ return new class extends Migration
                 );
             }
         }
+
+        // Update student IDs to 21-29199 format
+        User::where('email', 'student@example.test')->update(['student_id' => '21-29199']);
+        User::where('email', 'student2@example.test')->update(['student_id' => '22-30142']);
+        User::whereIn('student_id', ['STU-2026-001', '2023-01482-MN-0'])->update(['student_id' => '21-29199']);
+        User::whereIn('student_id', ['STU-2026-002', '2026-0002'])->update(['student_id' => '22-30142']);
     }
 
     /**

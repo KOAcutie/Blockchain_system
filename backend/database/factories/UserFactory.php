@@ -24,7 +24,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'student_id' => 'STU-2026-' . fake()->unique()->numerify('###'),
+            'student_id' => fake()->numberBetween(20, 26) . '-' . fake()->unique()->numerify('#####'),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'role_id' => $studentRole->id,

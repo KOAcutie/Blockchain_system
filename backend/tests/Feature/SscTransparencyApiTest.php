@@ -33,7 +33,7 @@ class SscTransparencyApiTest extends TestCase
         $this->student = User::create([
             'name' => 'Demo Student',
             'email' => 'student@example.test',
-            'student_id' => 'STU-2026-001',
+            'student_id' => '21-29199',
             'password' => 'password',
             'role_id' => $studentRole->id,
             'status' => 'active',
@@ -86,7 +86,7 @@ class SscTransparencyApiTest extends TestCase
         $this->withHeader('Authorization', 'Bearer ' . $token)
             ->getJson('/api/auth/me')
             ->assertStatus(200)
-            ->assertJsonPath('data.user.student_id', 'STU-2026-001');
+            ->assertJsonPath('data.user.student_id', '21-29199');
 
         // 4. Logout works
         $this->withHeader('Authorization', 'Bearer ' . $token)

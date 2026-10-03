@@ -199,7 +199,7 @@ export default function StudentReceiptDetailPage() {
                     Student ID &amp; College
                   </p>
                   <p className="font-medium text-foreground">
-                    {receipt.student?.student_id || "STU-2026-001"} •{" "}
+                    {receipt.student?.student_id || "21-29199"} •{" "}
                     {receipt.student?.college || "CCIS"}
                   </p>
                 </div>

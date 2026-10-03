@@ -36,7 +36,7 @@ export default function LoginPage() {
   const { toast } = useToast();
   const [roleTab, setRoleTab] = React.useState("student");
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [studentId, setStudentId] = React.useState("STU-2026-001");
+  const [studentId, setStudentId] = React.useState("21-29199");
   const [studentEmail, setStudentEmail] = React.useState(
     "student@example.test"
   );
@@ -261,7 +261,7 @@ export default function LoginPage() {
                         id="student-id"
                         value={studentId}
                         onChange={(e) => setStudentId(e.target.value)}
-                        placeholder="e.g. STU-2026-001"
+                        placeholder="e.g. 21-29199"
                         required
                       />
                     </div>
@@ -443,7 +443,7 @@ export default function LoginPage() {
                 className="text-xs"
                 onClick={() => {
                   setRoleTab("student");
-                  setStudentId("STU-2026-001");
+                  setStudentId("21-29199");
                   setStudentEmail("student@example.test");
                   setStudentPassword("password");
                 }}

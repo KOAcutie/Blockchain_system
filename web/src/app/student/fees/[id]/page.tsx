@@ -34,7 +34,7 @@ export default function StudentFeeDetailPage() {
   const fallbackFee = MOCK_FEES.find((item) => item.id === feeId) ?? MOCK_FEES[0];
 
   const [fee, setFee] = React.useState<FeeItem>(fallbackFee);
-  const [studentId, setStudentId] = React.useState("2023-01482-MN-0");
+  const [studentId, setStudentId] = React.useState("21-29199");
 
   React.useEffect(() => {
     const stored = getStoredUser();

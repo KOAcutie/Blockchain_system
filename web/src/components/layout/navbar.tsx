@@ -11,7 +11,6 @@ import {
   ShieldCheck,
   User,
   LogOut,
-  ArrowLeftRight,
   Landmark,
   Globe,
   ChevronDown,
@@ -281,20 +280,6 @@ export function Navbar({ role, onOpenMobileMenu }: NavbarProps) {
             >
               <User className="h-4 w-4 text-primary" />
               <span>Portal Dashboard</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() =>
-                router.push(
-                  role === "student"
-                    ? "/officer/dashboard"
-                    : "/student/dashboard"
-                )
-              }
-            >
-              <ArrowLeftRight className="h-4 w-4 text-muted-foreground" />
-              <span>
-                Switch to {role === "student" ? "Officer" : "Student"} Portal
-              </span>
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => router.push("/transparency")}>
               <Landmark className="h-4 w-4 text-muted-foreground" />

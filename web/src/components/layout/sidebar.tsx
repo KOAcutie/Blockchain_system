@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   GraduationCap,
   Landmark,
-  ArrowLeftRight,
   LogOut,
   ChevronRight,
   Globe,
@@ -38,10 +37,6 @@ export function Sidebar({
   const pathname = usePathname();
   const router = useRouter();
   const navItems = role === "student" ? STUDENT_NAV_ITEMS : OFFICER_NAV_ITEMS;
-  const oppositeRoleHref =
-    role === "student" ? "/officer/dashboard" : "/student/dashboard";
-  const oppositeRoleLabel =
-    role === "student" ? "Switch to Officer Portal" : "Switch to Student Portal";
 
   const handleSignOut = async () => {
     if (onMobileClose) onMobileClose();
@@ -218,20 +213,6 @@ export function Sidebar({
               <span className="flex items-center gap-2">
                 <Globe className="h-3.5 w-3.5 text-primary" />
                 Public Open View
-              </span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="sm"
-            className="w-full justify-between text-xs"
-          >
-            <Link href={oppositeRoleHref} onClick={onMobileClose}>
-              <span className="flex items-center gap-2">
-                <ArrowLeftRight className="h-3.5 w-3.5" />
-                {oppositeRoleLabel}
               </span>
               <ChevronRight className="h-3.5 w-3.5" />
             </Link>

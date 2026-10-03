@@ -69,55 +69,16 @@ export function getStoredUser<T = StoredUser>(): T | null {
 }
 
 /**
- * Ensures a valid Sanctum token is present in localStorage when a user visits
- * student or officer routes in local development.
+ * Returns the currently authenticated Sanctum bearer token from localStorage.
  */
 export async function ensureRoleToken(
-  preferredRole: "student" | "officer" = "student"
+  _preferredRole: "student" | "officer" = "student"
 ): Promise<string | null> {
   const existingToken = getStoredToken();
-  const existingUser = getStoredUser<{ role?: string }>();
-
-  if (
-    existingToken &&
-    existingUser &&
-    (existingUser.role === preferredRole ||
-      (preferredRole === "officer" && existingUser.role === "admin"))
-  ) {
+  if (existingToken) {
     return existingToken;
   }
-
-  try {
-    const email =
-      preferredRole === "officer"
-        ? "officer@example.test"
-        : "student@example.test";
-    const res = await fetch(`${API_BASE_URL}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password: "password",
-      }),
-    });
-
-    if (!res.ok) return existingToken;
-    const payload = (await res.json()) as ApiEnvelope<{
-      token: string;
-      user: unknown;
-    }>;
-    if (payload.success && payload.data?.token) {
-      setStoredSession(payload.data.token, payload.data.user);
-      return payload.data.token;
-    }
-  } catch {
-    // Backend may not be running during static build or offline preview
-  }
-
-  return existingToken;
+  return null;
 }
 
 export interface RequestOptions extends Omit<RequestInit, "body"> {

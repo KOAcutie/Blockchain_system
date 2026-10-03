@@ -154,7 +154,7 @@ export default function StudentPaymentPage() {
 
     setIsSubmitting(true);
     try {
-      const numericFeeId = Number(selectedFee.id) || 3;
+      const numericFeeId = Number(selectedFee.id) || 1;
       const payment = await paymentsApi.recordStudentPayment({
         fee_id: numericFeeId,
         amount: selectedFee.amount,
@@ -170,17 +170,22 @@ export default function StudentPaymentPage() {
         variant: "verified",
       });
 
-      router.push("/student/transactions");
-    } catch {
+      if (payment.receipt_number) {
+        router.push(`/student/receipt/${payment.receipt_number}`);
+      } else {
+        router.push("/student/transactions");
+      }
+    } catch (err: unknown) {
+      const errorMsg =
+        err instanceof Error
+          ? err.message
+          : "Unable to record payment. Please check your reference number and try again.";
+      setFormError(errorMsg);
       toast({
-        title: "Fee Payment Recorded",
-        description:
-          "Digital receipt generated and queued for SSC Finance Ledger attestation.",
-        variant: "verified",
+        title: "Payment Submission Failed",
+        description: errorMsg,
+        variant: "destructive",
       });
-      setTimeout(() => {
-        router.push("/student/receipt/SSC-RCP-2026-000001");
-      }, 300);
     } finally {
       setIsSubmitting(false);
     }

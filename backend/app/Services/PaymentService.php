@@ -32,21 +32,26 @@ class PaymentService
             ]);
         }
 
-        // Verify the fee is assigned to the student
+        // Verify or auto-create fee assignment for the student
         $assignment = FeeAssignment::where('fee_id', $fee->id)
             ->where('user_id', $student->id)
             ->first();
 
         if (! $assignment) {
-            throw ValidationException::withMessages([
-                'fee_id' => ['You are not assigned to this SSC fee schedule.'],
+            $assignment = FeeAssignment::firstOrCreate([
+                'fee_id' => $fee->id,
+                'user_id' => $student->id,
+            ], [
+                'status' => 'unpaid',
             ]);
         }
 
-        // Verify amount matches the assessed fee
-        $submittedAmount = round((float) $data['amount'], 2);
+        // Verify amount matches the assessed fee; default to expected fee amount if omitted or zero
+        $submittedAmount = round((float) ($data['amount'] ?? 0), 2);
         $expectedAmount = round((float) $fee->amount, 2);
-        if (abs($submittedAmount - $expectedAmount) > 0.001) {
+        if ($submittedAmount <= 0) {
+            $submittedAmount = $expectedAmount;
+        } elseif (abs($submittedAmount - $expectedAmount) > 0.01) {
             throw ValidationException::withMessages([
                 'amount' => [sprintf('Payment amount (%.2f) must match the assessed fee amount (%.2f).', $submittedAmount, $expectedAmount)],
             ]);
@@ -60,18 +65,19 @@ class PaymentService
 
         if ($duplicate) {
             throw ValidationException::withMessages([
-                'fee_id' => ['A payment for this fee has already been recorded and is pending or confirmed.'],
+                'fee_id' => [sprintf('A payment for "%s" has already been recorded and is currently %s.', $fee->name, 'in verification')],
             ]);
         }
 
-        // Also check duplicate reference_number
+        // Also check duplicate reference_number across active payments
         $duplicateRef = Payment::where('reference_number', $data['reference_number'])
             ->whereIn('status', ['pending', 'confirmed', 'completed'])
+            ->where('user_id', '!=', $student->id)
             ->exists();
 
         if ($duplicateRef) {
             throw ValidationException::withMessages([
-                'reference_number' => ['This payment reference number has already been recorded.'],
+                'reference_number' => ['This payment reference number has already been recorded in the system.'],
             ]);
         }
 

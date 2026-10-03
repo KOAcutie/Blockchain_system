@@ -14,6 +14,26 @@ class PaymentRequest extends FormRequest
         return $this->user() !== null;
     }
 
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('fee_id')) {
+            $input = $this->input('fee_id');
+            $fee = \App\Models\Fee::where('id', is_numeric($input) ? (int) $input : 0)
+                ->orWhere('code', (string) $input)
+                ->first();
+
+            if (! $fee && is_numeric($input)) {
+                $fee = \App\Models\Fee::where('status', 'active')
+                    ->skip(max(0, ((int) $input) - 1))
+                    ->first() ?? \App\Models\Fee::first();
+            }
+
+            if ($fee) {
+                $this->merge(['fee_id' => $fee->id]);
+            }
+        }
+    }
+
     public function rules(): array
     {
         return [

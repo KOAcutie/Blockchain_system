@@ -41,7 +41,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
     description: "View semester assessment fees and council contributions",
     subItems: [
       { title: "All Assessed Fees", href: "/student/fees" },
-      { title: "General Membership Fee", href: "/student/fees/1" },
+      { title: "Pay Outstanding Fee", href: "/student/payment" },
     ],
   },
   {
@@ -57,14 +57,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
     description: "Complete history of your payments and verification status",
     subItems: [
       { title: "Transaction History", href: "/student/transactions" },
-      {
-        title: "Latest Verified Transaction",
-        href: "/student/transactions/SSC-2026-000001",
-      },
-      {
-        title: "Official Digital Receipt",
-        href: "/student/receipt/SSC-RCP-2026-000001",
-      },
+      { title: "Submit New Payment", href: "/student/payment" },
     ],
   },
   {
@@ -92,7 +85,6 @@ export const OFFICER_NAV_ITEMS: NavItem[] = [
     subItems: [
       { title: "All Fee Schedules", href: "/officer/fees" },
       { title: "Create New Fee", href: "/officer/fees/new" },
-      { title: "Configure General Fee", href: "/officer/fees/1" },
     ],
   },
   {
@@ -134,6 +126,7 @@ export const ALL_PORTAL_ROUTES = [
     group: "Public Open View",
   },
   { label: "Institutional Login", path: "/login", group: "Authentication" },
+  { label: "Student Registration", path: "/register", group: "Authentication" },
   {
     label: "Student Dashboard",
     path: "/student/dashboard",
@@ -145,28 +138,13 @@ export const ALL_PORTAL_ROUTES = [
     group: "Student Portal",
   },
   {
-    label: "Fee Breakdown Details",
-    path: "/student/fees/1",
-    group: "Student Portal",
-  },
-  {
     label: "Record / Pay SSC Fee",
     path: "/student/payment",
     group: "Student Portal",
   },
   {
-    label: "Official Digital Receipt",
-    path: "/student/receipt/SSC-RCP-2026-000001",
-    group: "Student Portal",
-  },
-  {
-    label: "Student Transaction History",
+    label: "Student Transactions",
     path: "/student/transactions",
-    group: "Student Portal",
-  },
-  {
-    label: "Official Verification Detail",
-    path: "/student/transactions/SSC-2026-000001",
     group: "Student Portal",
   },
   {
@@ -187,11 +165,6 @@ export const ALL_PORTAL_ROUTES = [
   {
     label: "Create New Fee Schedule",
     path: "/officer/fees/new",
-    group: "Officer Portal",
-  },
-  {
-    label: "Configure Fee Schedule",
-    path: "/officer/fees/1",
     group: "Officer Portal",
   },
   {

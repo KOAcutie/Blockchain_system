@@ -82,9 +82,9 @@ export default function StudentFeeDetailPage() {
             </Button>
             {fee.status === "Paid" ? (
               <Button asChild size="sm">
-                <Link href="/student/receipt/SSC-RCP-2026-000001">
+                <Link href="/student/transactions">
                   <FileCheck2 className="h-4 w-4" />
-                  Open Official Receipt
+                  View Payment Record
                 </Link>
               </Button>
             ) : (

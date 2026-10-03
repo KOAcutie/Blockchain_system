@@ -213,12 +213,13 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
 | Blockchain Endpoints (/api/blockchain/*)
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth:sanctum')->prefix('blockchain')->group(function () {
+Route::prefix('blockchain')->group(function () {
     Route::get('/network', [BlockchainController::class, 'network']);
     Route::post('/verify', [BlockchainController::class, 'verify']);
+    Route::get('/verify', [BlockchainController::class, 'verify']);
     Route::get('/transactions/{hash}', [BlockchainController::class, 'showByHash']);
 
-    Route::middleware('role:officer,admin')->group(function () {
+    Route::middleware(['auth:sanctum', 'role:officer,admin'])->group(function () {
         Route::post('/transactions', [BlockchainController::class, 'submit']);
     });
 });

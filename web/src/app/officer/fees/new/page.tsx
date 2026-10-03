@@ -50,6 +50,12 @@ export default function OfficerNewFeePage() {
     switch (val) {
       case "PUBLICATION":
         return "Student Publication";
+      case "INSURANCE":
+        return "Student Insurance";
+      case "RED_CROSS":
+        return "Health & Community Extension";
+      case "DEPARTMENT":
+        return "Departmental Fee";
       case "EVENT":
         return "Campus Event Fund";
       case "OUTREACH":
@@ -157,7 +163,7 @@ export default function OfficerNewFeePage() {
                     id="fee-code"
                     value={feeCode}
                     onChange={(e) => setFeeCode(e.target.value)}
-                    placeholder="e.g. SSC-GEN-26A"
+                    placeholder="e.g. SSC-FEE-26A, KAW-PUB-26A"
                     required
                   />
                 </div>
@@ -205,8 +211,11 @@ export default function OfficerNewFeePage() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    <option value="MANDATORY">Mandatory Council Fee</option>
-                    <option value="PUBLICATION">Student Publication</option>
+                    <option value="MANDATORY">Supreme Student Council (SSC)</option>
+                    <option value="PUBLICATION">Kawasa Student Publication</option>
+                    <option value="INSURANCE">Student Insurance</option>
+                    <option value="RED_CROSS">Red Cross Youth (RCY)</option>
+                    <option value="DEPARTMENT">Department / College Fee</option>
                     <option value="EVENT">Campus Event Fund</option>
                     <option value="OUTREACH">Community Outreach</option>
                   </Select>

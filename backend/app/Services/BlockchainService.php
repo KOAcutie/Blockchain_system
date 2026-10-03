@@ -228,7 +228,7 @@ class BlockchainService
         // Step 1: Try Python blockchain service if configured and reachable
         try {
             $pythonUrl = rtrim((string) config('services.blockchain.url', ''), '/');
-            if (! empty($pythonUrl) && ! str_contains($pythonUrl, 'localhost:8001')) {
+            if (! empty($pythonUrl) && (app()->environment('testing') || ! str_contains($pythonUrl, 'localhost:8001'))) {
                 $response = Http::timeout(3)
                     ->withHeaders([
                         'X-Service-Key' => (string) config('services.blockchain.key'),

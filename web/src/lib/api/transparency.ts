@@ -74,12 +74,15 @@ export function mapCollectionToFeeItem(item: TransparencyCollectionItem): FeeIte
   const validCategories: FeeItem["category"][] = [
     "Mandatory Council Fee",
     "Student Publication",
+    "Student Insurance",
+    "Health & Community Extension",
+    "Departmental Fee",
     "Campus Event Fund",
     "Community Outreach",
   ];
   const category = validCategories.includes(item.category as FeeItem["category"])
     ? (item.category as FeeItem["category"])
-    : "Mandatory Council Fee";
+    : (item.category || "Mandatory Council Fee");
 
   return {
     id: String(item.fee_id),

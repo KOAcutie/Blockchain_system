@@ -76,9 +76,9 @@ const DEFAULT_LEDGER_ENTRIES: PublicLedgerEntry[] = [
     record_type: "Fee Collection Receipt",
     reference: "SSC-2026-000001",
     secondary_reference: "SSC-RCP-2026-000001",
-    title: "Supreme Student Council General Membership & Welfare Fee",
+    title: "Supreme Student Council (SSC) Membership Fee",
     category: "Mandatory Council Fee",
-    amount: 150.0,
+    amount: 100.0,
     date: "Sep 24, 2026 • 10:14 AM",
     block_number: 148920,
     contract_address: "0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856",
@@ -91,7 +91,7 @@ const DEFAULT_LEDGER_ENTRIES: PublicLedgerEntry[] = [
     record_type: "Fee Collection Receipt",
     reference: "SSC-2026-000002",
     secondary_reference: "SSC-RCP-2026-000002",
-    title: "Official Student Publication & Campus Press Levy",
+    title: "Kawasa Official Student Publication Fee",
     category: "Student Publication",
     amount: 75.0,
     date: "Sep 20, 2026 • 02:45 PM",
@@ -722,8 +722,8 @@ export function PublicTransparencyPortal() {
                     value: "SSC Appropriation Act No. 2026-012",
                   },
                   {
-                    label: "Fee Levy: SSC-GEN-26A",
-                    value: "SSC-GEN-26A",
+                    label: "Fee Levy: SSC-FEE-26A",
+                    value: "SSC-FEE-26A",
                   },
                 ].map((sample) => (
                   <button

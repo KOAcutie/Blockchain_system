@@ -6,7 +6,15 @@ export interface FeeItem {
   academicYear: string;
   amount: number;
   dueDate: string;
-  category: "Mandatory Council Fee" | "Student Publication" | "Campus Event Fund" | "Community Outreach";
+  category:
+    | "Mandatory Council Fee"
+    | "Student Publication"
+    | "Student Insurance"
+    | "Health & Community Extension"
+    | "Departmental Fee"
+    | "Campus Event Fund"
+    | "Community Outreach"
+    | string;
   status: "Paid" | "Unpaid" | "Partial" | "Pending Verification";
   description: string;
   resolutionNo: string;
@@ -70,22 +78,22 @@ export const MOCK_OFFICER_PROFILE = {
 export const MOCK_FEES: FeeItem[] = [
   {
     id: "1",
-    code: "SSC-GEN-26A",
-    title: "Supreme Student Council General Membership & Welfare Fee",
+    code: "SSC-FEE-26A",
+    title: "Supreme Student Council (SSC) Membership Fee",
     semester: "1st Semester",
     academicYear: "AY 2026–2027",
-    amount: 150.0,
+    amount: 100.0,
     dueDate: "October 15, 2026",
     category: "Mandatory Council Fee",
     status: "Paid",
     description:
-      "Standard semester membership fee supporting student representation, legal and medical assistance funds, academic competitions, and student rights welfare programs.",
-    resolutionNo: "SSC Resolution No. 2026-004",
+      "Standard semester membership fee supporting student council representation, student welfare assistance, leadership programs, and public financial transparency systems.",
+    resolutionNo: "SSC Resolution No. 2026-001",
     allocatedDepartments: [
-      "Student Welfare & Assistance (40%)",
+      "Student Rights & Welfare (40%)",
       "Academic & Leadership Programs (30%)",
       "General Assembly & Council Operations (20%)",
-      "Audit & Transparency Systems (10%)",
+      "Audit & Transparency Registry (10%)",
     ],
     collectedCount: 8420,
     totalStudents: 10250,
@@ -93,8 +101,8 @@ export const MOCK_FEES: FeeItem[] = [
   },
   {
     id: "2",
-    code: "SSC-PUB-26A",
-    title: "Official Student Publication & Campus Press Levy",
+    code: "KAW-PUB-26A",
+    title: "Kawasa Official Student Publication Fee",
     semester: "1st Semester",
     academicYear: "AY 2026–2027",
     amount: 75.0,
@@ -102,12 +110,12 @@ export const MOCK_FEES: FeeItem[] = [
     category: "Student Publication",
     status: "Paid",
     description:
-      "Supports printing, investigative reporting, and digital publishing of the official university student newspaper and annual transparency journal.",
-    resolutionNo: "SSC Resolution No. 2026-005",
+      "Official student publication levy supporting investigative journalism, broadsheet printing, literary folios, and online newsletter production by Kawasa.",
+    resolutionNo: "SSC Resolution No. 2026-002",
     allocatedDepartments: [
-      "Print & Digital Broadsheet Production (65%)",
-      "Campus Journalism Training & Press Freedom Fund (25%)",
-      "Annual Financial Transparency Supplement (10%)",
+      "Broadsheet & Literary Folio Printing (60%)",
+      "Digital Publishing & Investigative Equipment (25%)",
+      "Press Freedom & Journalism Seminars (15%)",
     ],
     collectedCount: 8190,
     totalStudents: 10250,
@@ -115,46 +123,69 @@ export const MOCK_FEES: FeeItem[] = [
   },
   {
     id: "3",
-    code: "SSC-UNI-26A",
-    title: "University Foundation Week & Inter-College Cultural Fund",
+    code: "INS-SAF-26A",
+    title: "Student Accident & Health Insurance Fee",
     semester: "1st Semester",
     academicYear: "AY 2026–2027",
-    amount: 120.0,
-    dueDate: "November 05, 2026",
-    category: "Campus Event Fund",
+    amount: 50.0,
+    dueDate: "October 31, 2026",
+    category: "Student Insurance",
     status: "Unpaid",
     description:
-      "Dedicated contribution for student-led academic symposia, inter-college sports and cultural delegations, and university-wide student assemblies.",
-    resolutionNo: "SSC Resolution No. 2026-009",
+      "Mandatory group accident and emergency hospitalization insurance coverage for students both on-campus and during official off-campus school activities.",
+    resolutionNo: "SSC Resolution No. 2026-003",
     allocatedDepartments: [
-      "Inter-College Academic & Cultural Competitions (50%)",
-      "Student Organizations Grant Pool (35%)",
-      "Venue, Safety & Medical Standby Logistics (15%)",
+      "Accident & Medical Reimbursement Claims (70%)",
+      "Emergency Hospitalization Assistance (20%)",
+      "Insurance Policy Claims Administration (10%)",
     ],
-    collectedCount: 5640,
+    collectedCount: 6150,
     totalStudents: 10250,
     ledgerRecordHash: "0x9d2b5e8a1c4f7b0d3e6a9c2f5b8e1a4d7c0f3b6e9a2d5c8f1b4e7a0d3c6f9b2e",
   },
   {
     id: "4",
-    code: "SSC-COM-26A",
-    title: "SSC Community Extension & Disaster Relief Reserve",
+    code: "RCY-HLT-26A",
+    title: "Red Cross Youth (RCY) & Health Services Fee",
     semester: "1st Semester",
     academicYear: "AY 2026–2027",
     amount: 50.0,
-    dueDate: "November 20, 2026",
-    category: "Community Outreach",
+    dueDate: "November 15, 2026",
+    category: "Health & Community Extension",
     status: "Unpaid",
     description:
-      "Student-governed emergency relief and community literacy outreach fund audited jointly by the SSC Finance Committee and Student COA.",
-    resolutionNo: "SSC Resolution No. 2026-011",
+      "Dedicated fund for Red Cross Youth campus emergency response, first aid station supplies, student disaster risk management, and annual voluntary blood donation drives.",
+    resolutionNo: "SSC Resolution No. 2026-004",
     allocatedDepartments: [
-      "Student Emergency Calamity Assistance (60%)",
-      "Partner Community Literacy & Health Drives (40%)",
+      "First Aid Equipment & Health Supplies (50%)",
+      "Emergency Response & Life Support Training (30%)",
+      "Voluntary Blood Donation & Outreach Drives (20%)",
     ],
-    collectedCount: 4910,
+    collectedCount: 5430,
     totalStudents: 10250,
     ledgerRecordHash: "0x1a5c9e3b7d2f6a8c4e0b9d3f7a1c5e9b2d6f0a4c8e2b6d0f4a8c2e6b0d4f8a2c",
+  },
+  {
+    id: "5",
+    code: "DEP-COL-26A",
+    title: "Department & College Student Council Fee",
+    semester: "1st Semester",
+    academicYear: "AY 2026–2027",
+    amount: 100.0,
+    dueDate: "November 30, 2026",
+    category: "Departmental Fee",
+    status: "Unpaid",
+    description:
+      "Departmental and collegiate student council fee supporting college-level academic conferences, specialized lab tools, research mentorship, and departmental general assemblies.",
+    resolutionNo: "SSC Resolution No. 2026-005",
+    allocatedDepartments: [
+      "College Symposia & Academic Competitions (45%)",
+      "Departmental Student Assembly & Mentorship (35%)",
+      "Specialized Lab Enhancement & Student Projects (20%)",
+    ],
+    collectedCount: 4890,
+    totalStudents: 10250,
+    ledgerRecordHash: "0x5e2a8c1f4b7d3e9a0c6f2b5d8e1a4c7f0b3d6e9a2c5f8b1d4e7a0c3f6b9d2e5a",
   },
 ];
 
@@ -167,8 +198,8 @@ export const MOCK_TRANSACTIONS: TransactionItem[] = [
     studentId: "2023-01482-MN-0",
     college: "CCIS",
     feeId: "1",
-    feeTitle: "SSC General Membership & Welfare Fee",
-    amount: 150.0,
+    feeTitle: "Supreme Student Council (SSC) Membership Fee",
+    amount: 100.0,
     date: "September 24, 2026 • 10:14 AM",
     paymentChannel: "University Cashier / LandBank Portal",
     status: "Verified",
@@ -184,7 +215,7 @@ export const MOCK_TRANSACTIONS: TransactionItem[] = [
     studentId: "2023-01482-MN-0",
     college: "CCIS",
     feeId: "2",
-    feeTitle: "Official Student Publication & Campus Press Levy",
+    feeTitle: "Kawasa Official Student Publication Fee",
     amount: 75.0,
     date: "September 20, 2026 • 02:45 PM",
     paymentChannel: "GCash Institutional Merchant",
@@ -201,8 +232,8 @@ export const MOCK_TRANSACTIONS: TransactionItem[] = [
     studentId: "2026-0002",
     college: "College of Engineering",
     feeId: "3",
-    feeTitle: "University Foundation Week & Cultural Fund",
-    amount: 120.0,
+    feeTitle: "Student Accident & Health Insurance Fee",
+    amount: 50.0,
     date: "September 28, 2026 • 04:10 PM",
     paymentChannel: "Maya / QR Ph",
     status: "Pending Review",

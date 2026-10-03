@@ -87,7 +87,7 @@ export default function StudentFeesPage() {
           <div className="relative flex-1 max-w-md">
             <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search fee title or code (e.g., SSC-GEN-26A)..."
+              placeholder="Search fee title or code (e.g., SSC-FEE-26A, KAW-PUB-26A)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9"

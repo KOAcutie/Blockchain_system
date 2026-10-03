@@ -88,78 +88,97 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 3. Seed SSC Fees
+        // 3. Seed Student Organization Fees
         $feesData = [
             [
-                'code' => 'SSC-GEN-26A',
-                'name' => 'Supreme Student Council General Membership & Welfare Fee',
-                'purpose' => 'Student Rights, Welfare & Council Operations',
-                'description' => 'Standard semester membership fee supporting student representation, legal and medical assistance funds, academic competitions, and student rights welfare programs.',
+                'code' => 'SSC-FEE-26A',
+                'name' => 'Supreme Student Council (SSC) Membership Fee',
+                'purpose' => 'Student Representation, Welfare & Council Operations',
+                'description' => 'Standard semester membership fee supporting student council representation, student welfare assistance, leadership programs, and public financial transparency systems.',
                 'category' => 'Mandatory Council Fee',
                 'semester' => '1st Semester',
                 'academic_year' => 'AY 2026–2027',
-                'resolution_no' => 'SSC Resolution No. 2026-004',
+                'resolution_no' => 'SSC Resolution No. 2026-001',
                 'allocated_departments' => [
-                    'Student Welfare & Assistance (40%)',
+                    'Student Rights & Welfare (40%)',
                     'Academic & Leadership Programs (30%)',
                     'General Assembly & Council Operations (20%)',
-                    'Audit & Transparency Systems (10%)',
+                    'Audit & Transparency Registry (10%)',
                 ],
-                'amount' => 150.00,
+                'amount' => 100.00,
                 'due_date' => '2026-10-15',
                 'status' => 'active',
             ],
             [
-                'code' => 'SSC-PUB-26A',
-                'name' => 'Official Student Publication & Campus Press Levy',
-                'purpose' => 'Campus Broadsheet & Annual Transparency Supplement',
-                'description' => 'Supports printing, investigative reporting, and digital publishing of the official university student newspaper and annual transparency journal.',
+                'code' => 'KAW-PUB-26A',
+                'name' => 'Kawasa Official Student Publication Fee',
+                'purpose' => 'Campus Press Freedom, Editorial Printing & Digital Journal',
+                'description' => 'Official student publication levy supporting investigative journalism, broadsheet printing, literary folios, and online newsletter production by Kawasa.',
                 'category' => 'Student Publication',
                 'semester' => '1st Semester',
                 'academic_year' => 'AY 2026–2027',
-                'resolution_no' => 'SSC Resolution No. 2026-005',
+                'resolution_no' => 'SSC Resolution No. 2026-002',
                 'allocated_departments' => [
-                    'Print & Digital Broadsheet Production (65%)',
-                    'Campus Journalism Training & Press Freedom Fund (25%)',
-                    'Annual Financial Transparency Supplement (10%)',
+                    'Broadsheet & Literary Folio Printing (60%)',
+                    'Digital Publishing & Investigative Equipment (25%)',
+                    'Press Freedom & Journalism Seminars (15%)',
                 ],
                 'amount' => 75.00,
                 'due_date' => '2026-10-15',
                 'status' => 'active',
             ],
             [
-                'code' => 'SSC-UNI-26A',
-                'name' => 'University Foundation Week & Inter-College Cultural Fund',
-                'purpose' => 'Academic Symposia & Inter-College Student Delegations',
-                'description' => 'Dedicated contribution for student-led academic symposia, inter-college sports and cultural delegations, and university-wide student assemblies.',
-                'category' => 'Campus Event Fund',
+                'code' => 'INS-SAF-26A',
+                'name' => 'Student Accident & Health Insurance Fee',
+                'purpose' => '24/7 Comprehensive Student Accident & Medical Coverage',
+                'description' => 'Mandatory group accident and emergency hospitalization insurance coverage for students both on-campus and during official off-campus school activities.',
+                'category' => 'Student Insurance',
                 'semester' => '1st Semester',
                 'academic_year' => 'AY 2026–2027',
-                'resolution_no' => 'SSC Resolution No. 2026-009',
+                'resolution_no' => 'SSC Resolution No. 2026-003',
                 'allocated_departments' => [
-                    'Inter-College Academic & Cultural Competitions (50%)',
-                    'Student Organizations Grant Pool (35%)',
-                    'Venue, Safety & Medical Standby Logistics (15%)',
+                    'Accident & Medical Reimbursement Claims (70%)',
+                    'Emergency Hospitalization Assistance (20%)',
+                    'Insurance Policy Claims Administration (10%)',
                 ],
-                'amount' => 120.00,
-                'due_date' => '2026-11-05',
+                'amount' => 50.00,
+                'due_date' => '2026-10-31',
                 'status' => 'active',
             ],
             [
-                'code' => 'SSC-COM-26A',
-                'name' => 'SSC Community Extension & Disaster Relief Reserve',
-                'purpose' => 'Student Calamity Relief & Community Outreach',
-                'description' => 'Student-governed emergency relief and community literacy outreach fund audited jointly by the SSC Finance Committee and Student COA.',
-                'category' => 'Community Outreach',
+                'code' => 'RCY-HLT-26A',
+                'name' => 'Red Cross Youth (RCY) & Health Services Fee',
+                'purpose' => 'Campus Emergency First-Aid, Health Safety & Disaster Readiness',
+                'description' => 'Dedicated fund for Red Cross Youth campus emergency response, first aid station supplies, student disaster risk management, and annual voluntary blood donation drives.',
+                'category' => 'Health & Community Extension',
                 'semester' => '1st Semester',
                 'academic_year' => 'AY 2026–2027',
-                'resolution_no' => 'SSC Resolution No. 2026-011',
+                'resolution_no' => 'SSC Resolution No. 2026-004',
                 'allocated_departments' => [
-                    'Student Emergency Calamity Assistance (60%)',
-                    'Partner Community Literacy & Health Drives (40%)',
+                    'First Aid Equipment & Health Supplies (50%)',
+                    'Emergency Response & Life Support Training (30%)',
+                    'Voluntary Blood Donation & Outreach Drives (20%)',
                 ],
                 'amount' => 50.00,
-                'due_date' => '2026-11-20',
+                'due_date' => '2026-11-15',
+                'status' => 'active',
+            ],
+            [
+                'code' => 'DEP-COL-26A',
+                'name' => 'Department & College Student Council Fee',
+                'purpose' => 'College Academic Symposia, Department Projects & Assembly',
+                'description' => 'Departmental and collegiate student council fee supporting college-level academic conferences, specialized lab tools, research mentorship, and departmental general assemblies.',
+                'category' => 'Departmental Fee',
+                'semester' => '1st Semester',
+                'academic_year' => 'AY 2026–2027',
+                'resolution_no' => 'SSC Resolution No. 2026-005',
+                'allocated_departments' => [
+                    'College Symposia & Academic Competitions (45%)',
+                    'Departmental Student Assembly & Mentorship (35%)',
+                    'Specialized Lab Enhancement & Student Projects (20%)',
+                ],
+                'amount' => 100.00,
+                'due_date' => '2026-11-30',
                 'status' => 'active',
             ],
         ];
@@ -176,9 +195,9 @@ class DatabaseSeeder extends Seeder
         foreach ([$demoStudent, $secondStudent] as $student) {
             foreach ($fees as $code => $fee) {
                 $status = 'unpaid';
-                if ($student->id === $demoStudent->id && in_array($code, ['SSC-GEN-26A', 'SSC-PUB-26A'], true)) {
+                if ($student->id === $demoStudent->id && in_array($code, ['SSC-FEE-26A', 'KAW-PUB-26A'], true)) {
                     $status = 'paid';
-                } elseif ($student->id === $secondStudent->id && $code === 'SSC-UNI-26A') {
+                } elseif ($student->id === $secondStudent->id && $code === 'INS-SAF-26A') {
                     $status = 'pending_verification';
                 }
 
@@ -194,13 +213,13 @@ class DatabaseSeeder extends Seeder
             ?: env('BLOCKCHAIN_CONTRACT_ADDRESS', '0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856');
 
         // 5. Seed Payments, Transactions, Receipts, and Blockchain Records
-        // Payment 1: Demo Student -> SSC-GEN-26A (Confirmed)
+        // Payment 1: Demo Student -> SSC-FEE-26A (Confirmed)
         $payment1 = Payment::updateOrCreate(
             ['reference_number' => 'SSC-OR-2026-00981'],
             [
                 'user_id' => $demoStudent->id,
-                'fee_id' => $fees['SSC-GEN-26A']->id,
-                'amount' => 150.00,
+                'fee_id' => $fees['SSC-FEE-26A']->id,
+                'amount' => 100.00,
                 'payment_method' => 'bank_transfer',
                 'status' => 'confirmed',
                 'notes' => 'University Cashier / LandBank Portal Settlement',
@@ -214,7 +233,7 @@ class DatabaseSeeder extends Seeder
             ['payment_id' => $payment1->id],
             [
                 'transaction_id' => 'SSC-2026-000001',
-                'amount' => 150.00,
+                'amount' => 100.00,
                 'status' => 'confirmed',
                 'confirmed_at' => $payment1->verified_at,
             ]
@@ -244,12 +263,12 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Payment 2: Demo Student -> SSC-PUB-26A (Confirmed)
+        // Payment 2: Demo Student -> KAW-PUB-26A (Confirmed)
         $payment2 = Payment::updateOrCreate(
             ['reference_number' => 'SSC-OR-2026-00944'],
             [
                 'user_id' => $demoStudent->id,
-                'fee_id' => $fees['SSC-PUB-26A']->id,
+                'fee_id' => $fees['KAW-PUB-26A']->id,
                 'amount' => 75.00,
                 'payment_method' => 'ewallet',
                 'status' => 'confirmed',
@@ -294,13 +313,13 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Payment 3: Demo Student Two -> SSC-UNI-26A (Pending Verification)
+        // Payment 3: Demo Student Two -> INS-SAF-26A (Pending Verification)
         $payment3 = Payment::updateOrCreate(
             ['reference_number' => 'SSC-OR-2026-01012'],
             [
                 'user_id' => $secondStudent->id,
-                'fee_id' => $fees['SSC-UNI-26A']->id,
-                'amount' => 120.00,
+                'fee_id' => $fees['INS-SAF-26A']->id,
+                'amount' => 50.00,
                 'payment_method' => 'ewallet',
                 'status' => 'pending',
                 'notes' => 'Maya / QR Ph Payment Submission',
@@ -314,7 +333,7 @@ class DatabaseSeeder extends Seeder
             ['payment_id' => $payment3->id],
             [
                 'transaction_id' => 'SSC-2026-000003',
-                'amount' => 120.00,
+                'amount' => 50.00,
                 'status' => 'pending',
                 'confirmed_at' => null,
             ]

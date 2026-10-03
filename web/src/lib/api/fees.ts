@@ -48,13 +48,16 @@ export function mapBackendFeeToUi(fee: BackendFee): FeeItem {
   const validCategories: FeeItem["category"][] = [
     "Mandatory Council Fee",
     "Student Publication",
+    "Student Insurance",
+    "Health & Community Extension",
+    "Departmental Fee",
     "Campus Event Fund",
     "Community Outreach",
   ];
 
   const category = validCategories.includes(fee.category as FeeItem["category"])
     ? (fee.category as FeeItem["category"])
-    : "Mandatory Council Fee";
+    : (fee.category || "Mandatory Council Fee");
 
   return {
     id: String(fee.id),

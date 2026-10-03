@@ -86,7 +86,7 @@ class TransparencyController extends Controller
         $query = trim((string) ($request->input('query') ?? $request->input('q') ?? $request->input('reference') ?? $request->input('hash') ?? ''));
 
         if ($query === '') {
-            return $this->errorResponse('Please provide a receipt number, transaction reference, resolution number, or cryptographic hash to verify.', 422);
+            return $this->errorResponse('Please provide a receipt number, transaction reference, resolution number, or cryptographic hash to verify.', [], 422);
         }
 
         $contractAddress = config('services.blockchain.contract_address', '0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856');
@@ -210,7 +210,7 @@ class TransparencyController extends Controller
             ], 'Approved fee schedule verified');
         }
 
-        return $this->errorResponse('No matching public receipt, transaction, resolution, or cryptographic hash found in the SSC registry.', 404);
+        return $this->errorResponse('No matching public receipt, transaction, resolution, or cryptographic hash found in the SSC registry.', [], 404);
     }
 
     protected function buildSummaryData(): array

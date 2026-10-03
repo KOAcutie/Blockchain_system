@@ -200,11 +200,10 @@ export function Sidebar({
         <div className="rounded-2xl border border-verified/20 bg-verified-muted/30 p-3 space-y-1.5">
           <div className="flex items-center gap-2 text-xs font-bold text-foreground">
             <ShieldCheck className="h-4 w-4 text-verified shrink-0" />
-            <span>Blockchain Registry Active</span>
+            <span>Audit Registry Active</span>
           </div>
           <p className="text-[11px] text-muted-foreground leading-relaxed">
-            Records are verified against the SSCTransparency smart contract and
-            audit ledger.
+            All transactions and receipts are verified against the official council audit ledger.
           </p>
         </div>
 

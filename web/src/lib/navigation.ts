@@ -165,7 +165,7 @@ export const ALL_PORTAL_ROUTES = [
     group: "Student Portal",
   },
   {
-    label: "Blockchain Verification Detail",
+    label: "Official Verification Detail",
     path: "/student/transactions/SSC-2026-000001",
     group: "Student Portal",
   },

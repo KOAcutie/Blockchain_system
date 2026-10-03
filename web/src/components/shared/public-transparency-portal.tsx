@@ -13,7 +13,6 @@ import {
   Download,
   Paperclip,
   CheckCircle2,
-  Database,
   Globe,
   LogIn,
   Sparkles,
@@ -554,8 +553,8 @@ export function PublicTransparencyPortal() {
                   />
                   {backendConnected && (
                     <Badge variant="verified" className="gap-1 rounded-full">
-                      <Database className="h-3 w-3" />
-                      Live PostgreSQL &amp; Blockchain Synced
+                      <CheckCircle2 className="h-3 w-3" />
+                      Official Audit Registry Active
                     </Badge>
                   )}
                 </div>
@@ -567,7 +566,7 @@ export function PublicTransparencyPortal() {
                   Supreme Student Council ({semesterLabel}). Every student,
                   parent, faculty adviser, and auditor can inspect all council fee
                   collections, Student Assembly appropriations, COA liquidation
-                  vouchers, and blockchain-attested receipts below without
+                  vouchers, and verified official receipts below without
                   signing in.
                 </p>
               </div>
@@ -653,7 +652,7 @@ export function PublicTransparencyPortal() {
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="h-5 w-5 text-primary" />
                     <CardTitle className="text-lg">
-                      Public Receipt, Transaction &amp; Blockchain Hash Verifier
+                      Public Receipt &amp; Transaction Verification Engine
                     </CardTitle>
                   </div>
                   <CardDescription>
@@ -664,7 +663,7 @@ export function PublicTransparencyPortal() {
                   </CardDescription>
                 </div>
                 <Badge variant="outline" className="font-mono text-[11px] w-fit">
-                  Zero-PII Public Verification
+                  Instant Public Verification
                 </Badge>
               </div>
             </CardHeader>
@@ -859,8 +858,8 @@ export function PublicTransparencyPortal() {
                   Budget Allocation by Category ({categoryBreakdowns.length})
                 </TabsTrigger>
                 <TabsTrigger value="ledger" className="gap-1.5">
-                  <Blocks className="h-3.5 w-3.5" />
-                  Public Blockchain Audit Log ({ledgerEntries.length})
+                  <FileCheck2 className="h-3.5 w-3.5" />
+                  Public Audit Registry ({ledgerEntries.length})
                 </TabsTrigger>
               </TabsList>
 
@@ -1239,25 +1238,24 @@ export function PublicTransparencyPortal() {
               </div>
             </TabsContent>
 
-            {/* TAB 4: Public Blockchain Audit Ledger */}
+            {/* TAB 4: Public Audit Registry */}
             <TabsContent value="ledger">
               <Card>
                 <CardHeader>
                   <CardTitle>
-                    Public Blockchain Attestation &amp; Audit Trail
+                    Public Attestation &amp; Audit Trail
                   </CardTitle>
                   <CardDescription>
                     Anonymized, tamper-evident log of verified fee collection
-                    receipts and council fund disbursements anchored to{" "}
-                    <span className="font-mono">{contractAddress}</span>. No
-                    personal student information is exposed.
+                    receipts and council fund disbursements. No personal student
+                    information is exposed.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {filteredLedger.length === 0 ? (
                     <EmptyState
-                      title="No Matching Ledger Entries"
-                      description="No public blockchain attestation records matched your search."
+                      title="No Matching Registry Entries"
+                      description="No public attestation records matched your search."
                       action={
                         <Button
                           variant="outline"

@@ -88,7 +88,7 @@ export function VerificationBadge({
       )}
       <span>
         {isVerified
-          ? "Blockchain Verified"
+          ? "Officially Verified"
           : isFailed
           ? "Verification Failed"
           : "Pending Verification"}
@@ -142,17 +142,17 @@ export function VerificationBadge({
           </div>
           <DialogDescription className="pt-2 text-left">
             {isVerified
-              ? "This financial record has been cryptographically anchored to the SSCTransparency smart contract to guarantee authenticity and prevent unauthorized alteration."
+              ? "This financial record has been cryptographically attested to guarantee authenticity and prevent unauthorized alteration."
               : isFailed
-              ? "The payment record is safely stored in the SSC database, but blockchain transaction submission failed and is queued for officer retry."
-              : "This financial record has been logged in the system and is currently awaiting officer verification and blockchain anchoring."}
+              ? "The payment record is safely stored, and official attestation is queued for council confirmation."
+              : "This financial record has been logged in the system and is currently awaiting officer verification."}
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-2.5 rounded-lg border bg-muted/40 p-4 text-xs">
           <div className="flex justify-between gap-2 border-b pb-2">
             <span className="text-muted-foreground">
-              Blockchain Verification
+              Verification Status
             </span>
             <span
               className={
@@ -180,7 +180,7 @@ export function VerificationBadge({
             </span>
           </div>
           <div className="flex justify-between gap-2 border-b pb-2">
-            <span className="text-muted-foreground">Ledger Reference</span>
+            <span className="text-muted-foreground">Audit Reference</span>
             <span className="font-medium text-foreground">
               {blockNumber ? `Block #${blockNumber}` : blockRef}
             </span>
@@ -196,7 +196,7 @@ export function VerificationBadge({
           {effectiveTxHash && (
             <div className="flex justify-between gap-2 border-b pb-2">
               <span className="text-muted-foreground">
-                Blockchain Transaction
+                Attestation Reference
               </span>
               <span className="font-mono text-[11px] text-foreground">
                 {truncateHash(effectiveTxHash, 10, 8)}

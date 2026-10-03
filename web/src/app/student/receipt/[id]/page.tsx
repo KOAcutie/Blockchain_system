@@ -263,7 +263,7 @@ export default function StudentReceiptDetailPage() {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2 text-sm font-semibold text-verified">
                   <ShieldCheck className="h-5 w-5" />
-                  <span>Blockchain Verification Status: {bcStatus}</span>
+                  <span>Official Verification Status: {bcStatus}</span>
                 </div>
                 <VerificationBadge
                   status={bcStatus}
@@ -272,7 +272,7 @@ export default function StudentReceiptDetailPage() {
                   blockRef={
                     receipt.blockchain?.block_number
                       ? `Block #${receipt.blockchain.block_number}`
-                      : "Pending Ledger Anchoring"
+                      : "Pending Ledger Confirmation"
                   }
                   timestamp={receipt.date}
                   transactionHash={receipt.blockchain?.transaction_hash}
@@ -298,7 +298,7 @@ export default function StudentReceiptDetailPage() {
                 {receipt.blockchain?.transaction_hash && (
                   <div className="space-y-1 pt-1">
                     <span className="text-muted-foreground">
-                      Blockchain Transaction Hash:
+                      Attestation Reference Hash:
                     </span>
                     <div className="rounded border bg-background px-3 py-2 font-mono text-[11px] break-all text-foreground">
                       {receipt.blockchain.transaction_hash}
@@ -307,7 +307,7 @@ export default function StudentReceiptDetailPage() {
                 )}
                 <div className="space-y-1 pt-1">
                   <span className="text-muted-foreground">
-                    Record Hash (SHA-256 Digest):
+                    Integrity Verification Hash (SHA-256):
                   </span>
                   <div className="rounded border bg-background px-3 py-2 font-mono text-[11px] break-all text-foreground">
                     {receipt.blockchain?.record_hash || "Pending"}
@@ -327,7 +327,7 @@ export default function StudentReceiptDetailPage() {
                   receipt.transaction_id || "SSC-2026-000001"
                 }`}
               >
-                Inspect Transaction &amp; Blockchain Record
+                Inspect Transaction &amp; Attestation Record
                 <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
               </Link>
             </Button>

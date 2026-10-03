@@ -110,20 +110,20 @@ export default function StudentTransactionDetailPage() {
 
       toast({
         title: res.verified
-          ? "Blockchain Verification Confirmed"
-          : "Record Not Yet Anchored / Mismatch",
+          ? "Official Attestation Confirmed"
+          : "Record Pending Confirmation",
         description: res.verified
-          ? `On-chain record hash matches ${tx.id} at Block #${res.block_number}.`
-          : "This transaction is currently pending or awaiting blockchain confirmation.",
+          ? `Record verified and matches ${tx.id} at Block #${res.block_number}.`
+          : "This transaction is currently pending or awaiting council confirmation.",
         variant: res.verified ? "verified" : "warning",
       });
     } catch (err: unknown) {
       toast({
-        title: "Blockchain Service Unavailable",
+        title: "Verification Service Temporarily Unavailable",
         description:
           err instanceof Error
             ? err.message
-            : "Could not reach the Python blockchain verification service.",
+            : "Could not reach the verification service. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -144,7 +144,7 @@ export default function StudentTransactionDetailPage() {
           { label: tx.id },
         ]}
         title={`Transaction Record ${tx.id}`}
-        description={`Detailed settlement audit log and blockchain verification status for ${tx.feeTitle}.`}
+        description={`Detailed settlement audit log and official verification status for ${tx.feeTitle}.`}
         badge={
           <VerificationBadge
             status={tx.blockchainVerification}
@@ -182,7 +182,7 @@ export default function StudentTransactionDetailPage() {
               <CardTitle>Settlement Record Particulars</CardTitle>
               <CardDescription>
                 Official student council fee payment details recorded in the
-                Laravel database.
+                official council registry.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
@@ -203,7 +203,7 @@ export default function StudentTransactionDetailPage() {
               </div>
               <div className="flex justify-between items-center border-b pb-2.5">
                 <span className="text-muted-foreground">
-                  Blockchain Verification
+                  Verification Status
                 </span>
                 <Badge
                   variant={
@@ -270,12 +270,11 @@ export default function StudentTransactionDetailPage() {
             <CardHeader>
               <div className="flex items-center gap-2">
                 <FileCheck2 className="h-5 w-5 text-verified" />
-                <CardTitle>Blockchain Verification Details</CardTitle>
+                <CardTitle>Official Verification Details</CardTitle>
               </div>
               <CardDescription>
-                Cryptographic record hash and smart contract anchor metadata from
-                SSCTransparency.sol. No personal student information is stored
-                on-chain.
+                Cryptographic record hash and institutional attestation metadata.
+                No personal student information is publicly exposed.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -289,7 +288,7 @@ export default function StudentTransactionDetailPage() {
                   </div>
                   <div>
                     <p className="text-muted-foreground">
-                      Blockchain Verification
+                      Verification Status
                     </p>
                     <p
                       className={`font-semibold mt-0.5 ${
@@ -313,17 +312,17 @@ export default function StudentTransactionDetailPage() {
                     <p className="text-muted-foreground">Block Number</p>
                     <p className="font-mono font-semibold text-foreground mt-0.5">
                       {tx.blockNumber !== null
-                        ? `#${tx.blockNumber} (${tx.network})`
+                        ? `#${tx.blockNumber}`
                         : "Pending Confirmation"}
                     </p>
                   </div>
                 </div>
 
-                {/* Blockchain Transaction Hash */}
+                {/* Attestation Reference Hash */}
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-muted-foreground uppercase tracking-wider">
-                      Blockchain Transaction
+                      Attestation Reference
                     </span>
                     {tx.blockchainTransactionHash && (
                       <Button
@@ -333,7 +332,7 @@ export default function StudentTransactionDetailPage() {
                         onClick={() =>
                           handleCopyDigest(
                             tx.blockchainTransactionHash!,
-                            "Blockchain Transaction Hash"
+                            "Attestation Reference Hash"
                           )
                         }
                       >
@@ -344,7 +343,7 @@ export default function StudentTransactionDetailPage() {
                   </div>
                   <div className="rounded border bg-background p-2.5 font-mono text-xs break-all">
                     {tx.blockchainTransactionHash ||
-                      "Not yet submitted to blockchain"}
+                      "Awaiting confirmation"}
                   </div>
                 </div>
 
@@ -383,7 +382,7 @@ export default function StudentTransactionDetailPage() {
 
                 {tx.errorMessage && (
                   <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-2.5 text-destructive">
-                    Last Blockchain Error: {tx.errorMessage}
+                    Attestation Note: {tx.errorMessage}
                   </div>
                 )}
               </div>
@@ -397,7 +396,7 @@ export default function StudentTransactionDetailPage() {
             <CardHeader>
               <CardTitle>Audit Verification Timeline</CardTitle>
               <CardDescription>
-                How this fee payment was validated and anchored.
+                How this fee payment was validated and certified.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-5">
@@ -419,20 +418,18 @@ export default function StudentTransactionDetailPage() {
                       : ("pending" as const),
                 },
                 {
-                  step: "3. Digital Receipt & Canonical Hash Generated",
-                  detail: `Official Receipt ${tx.receiptId} • SHA-256 record hash computed`,
+                  step: "3. Digital Receipt & Integrity Hash Generated",
+                  detail: `Official Receipt ${tx.receiptId} • SHA-256 hash computed`,
                   state: "done" as const,
                 },
                 {
-                  step: "4. Smart Contract Blockchain Confirmation",
+                  step: "4. Official Council Attestation Confirmation",
                   detail:
                     tx.blockchainVerification === "Verified"
-                      ? `Confirmed at Block #${tx.blockNumber ?? 1} on ${
-                          tx.network
-                        }`
+                      ? `Confirmed at Block #${tx.blockNumber ?? 1}`
                       : tx.blockchainVerification === "Failed"
-                      ? "Blockchain submission failed (payment record preserved)"
-                      : "Pending blockchain confirmation",
+                      ? "Attestation pending (payment record preserved)"
+                      : "Pending confirmation",
                   state:
                     tx.blockchainVerification === "Verified"
                       ? ("done" as const)

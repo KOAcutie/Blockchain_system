@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "SSC Transparency | Supreme Student Council Financial & Fee Portal",
   description:
-    "Official Supreme Student Council organization fee collection, digital receipt issuance, and blockchain-verified financial transparency portal.",
+    "Official Supreme Student Council organization fee collection, digital receipt issuance, and audited financial transparency portal.",
   manifest: "/manifest.json",
   icons: {
     icon: [

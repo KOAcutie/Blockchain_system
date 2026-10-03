@@ -88,7 +88,7 @@ export default function OfficerTransactionsPage() {
         description: `Payment by ${tx.studentName} confirmed (${
           res.blockchain?.status === "confirmed"
             ? `Block #${res.blockchain.block_number}`
-            : "Blockchain status: " + (res.blockchain?.status || "pending")
+            : "Attestation status: " + (res.blockchain?.status || "pending")
         }).`,
         variant: "verified",
       });
@@ -120,7 +120,7 @@ export default function OfficerTransactionsPage() {
       const res = await transactionsApi.retryBlockchainSubmission(tx.id);
       await loadTransactions();
       toast({
-        title: "Blockchain Attestation Updated",
+        title: "Attestation Status Updated",
         description: `Status for ${tx.id}: ${res.status}`,
         variant: res.status === "confirmed" ? "verified" : "default",
       });
@@ -261,7 +261,7 @@ export default function OfficerTransactionsPage() {
                   <TableHead>Assessed Fee</TableHead>
                   <TableHead>Amount</TableHead>
                   <TableHead>Channel &amp; Timestamp</TableHead>
-                  <TableHead>Blockchain Verification</TableHead>
+                  <TableHead>Verification Status</TableHead>
                   <TableHead className="text-right">Action</TableHead>
                 </TableRow>
               </TableHeader>
@@ -319,7 +319,7 @@ export default function OfficerTransactionsPage() {
                           onClick={() => handleRetryBlockchain(tx)}
                         >
                           <RotateCcw className="h-3.5 w-3.5" />
-                          Anchor On-Chain
+                          Verify &amp; Attest
                         </Button>
                       ) : (
                         <Button

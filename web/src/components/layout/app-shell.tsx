@@ -51,7 +51,7 @@ export function AppShell({ role, children }: AppShellProps) {
               Audit Portal
             </p>
             <p className="font-mono text-[11px]">
-              Blockchain-Attested Audit Registry • Academic Year 2026–2027
+              Official Council Audit Registry • Academic Year 2026–2027
             </p>
           </div>
         </footer>

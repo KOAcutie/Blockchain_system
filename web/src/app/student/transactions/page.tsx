@@ -112,7 +112,7 @@ export default function StudentTransactionsPage() {
           { label: "Transaction History" },
         ]}
         title="Payment & Verification History"
-        description="Complete log of your SSC fee settlements, digital receipts, and blockchain verification records."
+        description="Complete log of your SSC fee settlements, official digital receipts, and verified audit records."
         actions={
           <>
             <Button
@@ -200,7 +200,7 @@ export default function StudentTransactionsPage() {
                   <TableHead>Fee Description</TableHead>
                   <TableHead>Amount</TableHead>
                   <TableHead>Channel &amp; Date</TableHead>
-                  <TableHead>Blockchain Verification</TableHead>
+                  <TableHead>Verification Status</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>

@@ -151,7 +151,7 @@ export function Navbar({ role, onOpenMobileMenu }: NavbarProps) {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-verified" />
             </span>
             <ShieldCheck className="h-3.5 w-3.5" />
-            <span>Blockchain Registry Synced</span>
+            <span>Audit Registry Synced</span>
           </div>
         </div>
       </div>

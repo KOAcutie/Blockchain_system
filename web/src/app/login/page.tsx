@@ -194,12 +194,12 @@ export default function LoginPage() {
               </div>
             </Link>
             <div className="hidden lg:block">
-              <Badge variant="outline">Laravel Sanctum Auth</Badge>
+              <Badge variant="outline">Secure Council Login</Badge>
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
               <Badge variant="outline" className="lg:hidden">
-                Sanctum Auth
+                Secure Login
               </Badge>
             </div>
           </div>

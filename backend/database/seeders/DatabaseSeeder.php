@@ -191,7 +191,7 @@ class DatabaseSeeder extends Seeder
 
         $blockchainService = app(BlockchainService::class);
         $contractAddr = config('services.blockchain.contract_address')
-            ?: env('BLOCKCHAIN_CONTRACT_ADDRESS', '0x5FbDB2315678afecb367f032d93F642f64180aa3');
+            ?: env('BLOCKCHAIN_CONTRACT_ADDRESS', '0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856');
 
         // 5. Seed Payments, Transactions, Receipts, and Blockchain Records
         // Payment 1: Demo Student -> SSC-GEN-26A (Confirmed)
@@ -233,10 +233,10 @@ class DatabaseSeeder extends Seeder
         BlockchainRecord::updateOrCreate(
             ['transaction_id' => $tx1->id],
             [
-                'network' => 'localhost',
+                'network' => config('services.blockchain.network', 'sepolia'),
                 'contract_address' => $contractAddr,
-                'blockchain_transaction_hash' => '0x' . substr(hash('sha256', 'tx-hash-1:' . $hash1), 0, 64),
-                'block_number' => 1,
+                'blockchain_transaction_hash' => '0x4b6bb4f71a1a17405ad738b51ed3ec7c47b422f615865f8dc9a41fce73c2b5ff',
+                'block_number' => 11832631,
                 'record_hash' => $hash1,
                 'status' => 'confirmed',
                 'confirmed_at' => $payment1->verified_at,
@@ -283,10 +283,10 @@ class DatabaseSeeder extends Seeder
         BlockchainRecord::updateOrCreate(
             ['transaction_id' => $tx2->id],
             [
-                'network' => 'localhost',
+                'network' => config('services.blockchain.network', 'sepolia'),
                 'contract_address' => $contractAddr,
-                'blockchain_transaction_hash' => '0x' . substr(hash('sha256', 'tx-hash-2:' . $hash2), 0, 64),
-                'block_number' => 2,
+                'blockchain_transaction_hash' => '0xa767f2cc04c4b9ae965992263169df07d78518506cbe352463faad2698803aff',
+                'block_number' => 11832000,
                 'record_hash' => $hash2,
                 'status' => 'confirmed',
                 'confirmed_at' => $payment2->verified_at,

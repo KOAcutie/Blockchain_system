@@ -83,13 +83,13 @@ class TransparencyController extends Controller
      */
     public function verify(Request $request): JsonResponse
     {
-        $query = trim((string) ($request->input('q') ?? $request->input('reference') ?? $request->input('hash') ?? ''));
+        $query = trim((string) ($request->input('query') ?? $request->input('q') ?? $request->input('reference') ?? $request->input('hash') ?? ''));
 
         if ($query === '') {
             return $this->errorResponse('Please provide a receipt number, transaction reference, resolution number, or cryptographic hash to verify.', 422);
         }
 
-        $contractAddress = config('services.blockchain.contract_address', '0x5FbDB2315678afecb367f032d93F642f64180aa3');
+        $contractAddress = config('services.blockchain.contract_address', '0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856');
 
         // 1. Check Receipt Number
         $receipt = Receipt::with(['payment.fee', 'payment.transaction.blockchainRecord'])
@@ -289,7 +289,7 @@ class TransparencyController extends Controller
 
     protected function buildPublicLedgerData(): array
     {
-        $contractAddress = config('services.blockchain.contract_address', '0x5FbDB2315678afecb367f032d93F642f64180aa3');
+        $contractAddress = config('services.blockchain.contract_address', '0x4a2f3977cd48FF6D04B0069d58dCAfd45e852856');
         $entries = [];
 
         // 1. Anonymized verified payment transactions

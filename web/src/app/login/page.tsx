@@ -197,10 +197,10 @@ export default function LoginPage() {
               <Badge variant="outline">Secure Council Login</Badge>
             </div>
             <div className="flex items-center gap-2">
+              <Button asChild variant="outline" size="sm" className="text-xs">
+                <Link href="/register">Student Register</Link>
+              </Button>
               <ThemeToggle />
-              <Badge variant="outline" className="lg:hidden">
-                Secure Login
-              </Badge>
             </div>
           </div>
 
@@ -321,7 +321,16 @@ export default function LoginPage() {
                         </>
                       )}
                     </Button>
-                    <div className="flex w-full items-center justify-between text-xs text-muted-foreground pt-1">
+                    <div className="flex w-full items-center justify-between text-xs text-muted-foreground pt-1 border-t">
+                      <span>New student without an account?</span>
+                      <Link
+                        href="/register"
+                        className="font-medium text-primary hover:underline"
+                      >
+                        Register Student Account →
+                      </Link>
+                    </div>
+                    <div className="flex w-full items-center justify-between text-xs text-muted-foreground">
                       <span>Public Visitor (No Account)?</span>
                       <Link
                         href="/transparency"

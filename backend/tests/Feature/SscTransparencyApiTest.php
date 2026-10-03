@@ -101,6 +101,35 @@ class SscTransparencyApiTest extends TestCase
             ->assertJsonPath('success', false);
     }
 
+    public function test_student_registration_creates_account_and_assigns_fees(): void
+    {
+        $payload = [
+            'name' => 'Kassandra Nicole Reyes',
+            'email' => 'kassandra@student.university.edu.ph',
+            'student_id' => '21-88492',
+            'password' => 'SecurePass123!',
+            'password_confirmation' => 'SecurePass123!',
+            'college' => 'College of Computer and Information Sciences',
+            'program' => 'BS Computer Science',
+            'year_level' => '2nd Year',
+        ];
+
+        $response = $this->postJson('/api/auth/register', $payload);
+
+        $response->assertStatus(201)
+            ->assertJsonPath('success', true)
+            ->assertJsonPath('data.user.name', 'Kassandra Nicole Reyes')
+            ->assertJsonPath('data.user.student_id', '21-88492')
+            ->assertJsonPath('data.user.role', 'student');
+
+        $this->assertDatabaseHas('users', [
+            'email' => 'kassandra@student.university.edu.ph',
+            'student_id' => '21-88492',
+        ]);
+
+        $this->assertNotEmpty($response->json('data.token'));
+    }
+
     public function test_role_based_authorization_enforcement(): void
     {
         // Student cannot access officer endpoints

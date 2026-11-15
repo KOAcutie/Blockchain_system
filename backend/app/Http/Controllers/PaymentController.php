@@ -184,10 +184,12 @@ class PaymentController extends Controller
             return $this->errorResponse('Forbidden.', ['authorization' => ['Not authorized to view this payment proof.']], 403);
         }
 
-        if (! Storage::disk('local')->exists($payment->proof_path)) {
+        $disk = Storage::disk(config('filesystems.default'));
+
+        if (! $disk->exists($payment->proof_path)) {
             return $this->errorResponse('Proof file missing from private storage.', ['proof' => ['File not found.']], 404);
         }
 
-        return Storage::disk('local')->response($payment->proof_path);
+        return $disk->response($payment->proof_path);
     }
 }

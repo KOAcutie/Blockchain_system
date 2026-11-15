@@ -83,7 +83,7 @@ class PaymentService
 
         $proofPath = null;
         if ($proofFile) {
-            $proofPath = $proofFile->store('payment_proofs', 'local');
+            $proofPath = $proofFile->store('payment_proofs', config('filesystems.default'));
         }
 
         return DB::transaction(function () use ($student, $fee, $assignment, $data, $submittedAmount, $proofPath) {

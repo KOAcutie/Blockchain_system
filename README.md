@@ -126,6 +126,8 @@ npm run dev
 
 Open `http://localhost:3000` in your browser.
 
+For Vercel backend deployment, see [the backend deployment guide](backend/README.md#deploy-to-vercel).
+
 ---
 
 ## 4. Seeded Demo Accounts

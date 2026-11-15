@@ -192,7 +192,8 @@ class SscTransparencyApiTest extends TestCase
 
     public function test_payment_recording_validation_duplicate_prevention_and_rejection(): void
     {
-        Storage::fake('local');
+        config(['filesystems.default' => 's3']);
+        Storage::fake('s3');
 
         $fee = Fee::create([
             'code' => 'SSC-GEN-26A',
@@ -242,6 +243,18 @@ class SscTransparencyApiTest extends TestCase
 
         $this->assertStringStartsWith('SSC-', $txId);
         $this->assertStringStartsWith('SSC-RCP-', $receiptNumber);
+
+        $payment = Payment::findOrFail($paymentId);
+        Storage::disk('s3')->assertExists($payment->proof_path);
+
+        $this->actingAs($this->officer, 'sanctum')
+            ->get("/api/officer/payments/{$paymentId}/proof")
+            ->assertOk()
+            ->assertStreamedContent($proofFile->get());
+
+        $this->actingAs($this->student, 'sanctum')
+            ->getJson("/api/officer/payments/{$paymentId}/proof")
+            ->assertForbidden();
 
         // Duplicate payment for the same fee is rejected
         $this->actingAs($this->student, 'sanctum')

@@ -19,6 +19,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        if (isset($_SERVER['VERCEL']) || getenv('VERCEL')) {
+            $middleware->trustProxies(at: '*');
+        }
+
         $middleware->alias([
             'role' => RoleMiddleware::class,
         ]);

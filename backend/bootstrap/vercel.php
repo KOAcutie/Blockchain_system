@@ -1,5 +1,10 @@
 <?php
 
+// The function lives in /api, but Laravel is mounted at the domain root.
+// Preserve REQUEST_URI so Symfony does not strip the application's /api prefix.
+$_SERVER['SCRIPT_NAME'] = '/index.php';
+$_SERVER['PHP_SELF'] = '/index.php';
+
 // Vercel's application bundle is read-only; only temporary runtime files belong here.
 $runtimePath = sys_get_temp_dir().'/ssc-transparency';
 $storagePath = $runtimePath.'/storage';
